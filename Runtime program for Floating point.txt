@@ -1,0 +1,11 @@
+import java.util.*;  
+public class ScannerNextFloatExample1 {    
+    public static void main(String args[]){         
+        double b;  
+        Scanner input = new Scanner (System.in);   
+        System.out.print("Enter the Float value: ");  
+        b = s.nextFloat();  
+        System.out.print("Floating point value : "+b);  
+        s.close();  
+    }    
+}   

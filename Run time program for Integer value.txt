@@ -1,0 +1,12 @@
+import java.util.*;  
+public class ScannerNextFloatExample1 {    
+    public static void main(String args[]){         
+        double b;
+        int a;
+        Scanner s = new Scanner (System.in);  
+        System.out.print("Enter the integer: ");  
+        a = s.nextInt();   
+        System.out.print("Integer value is"+b);  
+        s.close();  
+    }    
+}  
