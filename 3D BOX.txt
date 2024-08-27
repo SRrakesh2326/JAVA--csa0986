@@ -1,0 +1,56 @@
+package application;  
+import javafx.application.Application; 
+import javafx.animation.FadeTransition;   
+import javafx.animation.RotateTransition;  
+import javafx.animation.TranslateTransition;  
+import javafx.scene.Group;  
+import javafx.scene.Scene;  
+import javafx.scene.paint.Color;  
+import javafx.scene.shape.Square;  
+import javafx.stage.Stage;   
+public class Square extends Application{  
+
+    public void start(Stage primaryStage) throws Exception {  
+       
+Square s= new Square();  
+        s.setX(500);
+        s.setY(400);
+        s.setHeight(150);
+        s.setWidth(100);  
+           
+         s.setFill(Color.LIMEGREEN);  
+         s.setStroke(Color.BLACK);  
+       
+         
+         Duration dur1 = Duration.millis(1000);  
+           
+         FadeTransition fade = new FadeTransition(dur2);  
+         fade.setFromValue(10,3);  
+         fade.setToValue(2,10);  
+         fade.setCycleCount(2);  
+         fade.setAutoReverse(true);  
+           
+   
+         TranslateTransition translate = new TranslateTransition(dur1);  
+         translate.setToX(150);  
+         translate.setCycleCount(2);  
+         translate.setAutoReverse(true);  
+           
+         
+         RotateTransition rotate = new RotateTransition(dur1);  
+         rotate.setByAngle(90);  
+         rotate.setCycleCount(4);  
+         rotate.setAutoReverse(true);  
+     
+         Group g = new Group();  
+         g.getChildren().addAll(Square);  
+         Scene scene = new Scene(g,500,400,Color.BLUE);  
+         primaryStage.setScene(scene);  
+         primaryStage.setTitle("Square");  
+         primaryStage.show();  
+    }  
+    public static void main(String[] args) {  
+        launch(args);  
+    }  
+  
+}  
