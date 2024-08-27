@@ -1,0 +1,57 @@
+package application;  
+import javafx.animation.StrokeTransition;  
+import javafx.application.Application;  
+
+import javafx.scene.Group;  
+import javafx.scene.Scene;  
+import javafx.scene.paint.Color;  
+import javafx.scene.shape.Circle;  
+
+import javafx.stage.Stage;  
+import javafx.util.Duration;  
+public class Ane_cirstroke extends Application{  
+  
+    @Override  
+    public void start(Stage primaryStage) throws Exception {  
+        
+       Circle c = new Circle(250,150,80);  
+        c.setFill(Color.LIMEGREEN);  
+        c.setStroke(Color.HOTPINK);  
+        c.setStrokeWidth(10);  
+          
+         
+        StrokeTransition st = new StrokeTransition();
+        
+         
+      st.setFromValue(Color.BLUE);
+      st.setToValue(Color.RED);
+          
+        
+       st.setCycleCount(500);  
+          
+       
+       st.setDuration(Duration.millis(1000));  
+          
+       
+       st.setAutoReverse(true);  
+              
+       
+       st.setShape(c);  
+          
+       
+       st.play();  
+          
+        
+        Group root = new Group();  
+        root.getChildren().addAll(c);  
+        Scene scene = new Scene(root,500,400,Color.BLACK);  
+        primaryStage.setScene(scene);  
+        primaryStage.setTitle("Translate Transition example");  
+        primaryStage.show();  
+          
+    }  
+    public static void main(String[] args) {  
+        launch(args);  
+    }  
+  
+}

@@ -1,0 +1,66 @@
+package application;
+import java.io.File;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+import javafx.animation.RotateTransition;
+import javafx.util.Duration;
+import javafx.scene.transform.Rotate;
+public class Video extends Application {
+    public void start(Stage primaryStage) throws Exception {
+        String path = "C:/Users/shrey/Downloads/Raayan 2024 720p HD.mp4";
+        Media m = new Media(new File(path).toURI().toString());
+        MediaPlayer mp = new MediaPlayer(m);
+        MediaView mv = new MediaView(mp);
+        // Set MediaView dimensions to match the Rectangle
+        mv.setX(0);
+        mv.setY(0);
+        mv.setFitWidth(600);
+        mv.setFitHeight(400);
+
+        // Create Play and Pause buttons
+        Button playButton = new Button("Play");
+        Button pauseButton = new Button("Pause");
+
+        // Set button actions
+        playButton.setOnAction(e -> mp.play());
+        pauseButton.setOnAction(e -> mp.pause());
+
+        // Layout for the buttons
+        HBox controlBox = new HBox(10, playButton, pauseButton);
+        controlBox.setLayoutX(685); // Set the position of the buttons
+        controlBox.setLayoutY(360);
+
+        mp.setAutoPlay(false);
+        RotateTransition rotate = new RotateTransition();
+
+        rotate.setAxis(Rotate.Y_AXIS);
+        rotate.setByAngle(360);
+
+        rotate.setCycleCount(500);
+
+        rotate.setDuration(Duration.millis(1000));      
+  rotate.setAutoReverse(true);
+        rotate.setNode(mv);
+        rotate.play();
+        Group root = new Group();
+        root.getChildren().addAll(mv, controlBox);
+
+        Scene scene = new Scene(root, 1000, 500, Color.WHITE);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("SIMATS");
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}

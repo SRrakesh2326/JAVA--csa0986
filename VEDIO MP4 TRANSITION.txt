@@ -1,0 +1,87 @@
+package application;
+import java.io.File;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+import javafx.animation.RotateTransition;
+import javafx.util.Duration;
+import javafx.scene.transform.Rotate;
+public class Video extends Application {
+    public void start(Stage primaryStage) throws Exception {
+        String path = "C:/Users/shrey/Downloads/Raayan 2024 720p HD.mp4";
+        Media media = new Media(new File(path).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        MediaView mediaView = new MediaView(mediaPlayer);
+
+        // Create a Rectangle
+        Rectangle rectangle = new Rectangle(450, 25, 500, 280); // x, y, width, height
+        rectangle.setFill(Color.RED); // Background color for the rectangle
+        rectangle.setStroke(Color.BLACK); // Stroke color for the rectangle
+        rectangle.setStrokeWidth(5); // Stroke width for the rectangle
+
+        // Set MediaView dimensions to match the Rectangle
+        mediaView.setX(rectangle.getX());
+        mediaView.setY(rectangle.getY());
+        mediaView.setFitWidth(rectangle.getWidth());
+        mediaView.setFitHeight(rectangle.getHeight());
+
+        // Create Play and Pause buttons
+        Button playButton = new Button("Play");
+        Button pauseButton = new Button("Pause");
+
+        // Set button actions
+        playButton.setOnAction(e -> mediaPlayer.play());
+        pauseButton.setOnAction(e -> mediaPlayer.pause());
+
+        // Layout for the buttons
+        HBox controlBox = new HBox(10, playButton, pauseButton);
+        controlBox.setLayoutX(685); // Set the position of the buttons
+        controlBox.setLayoutY(360);
+
+        mediaPlayer.setAutoPlay(false);
+        RotateTransition rotate = new RotateTransition();
+
+        //Setting Axis of rotation
+        rotate.setAxis(Rotate.Z_AXIS);
+
+        // setting the angle of rotation
+        rotate.setByAngle(360);
+
+        //setting cycle count of the rotation
+        rotate.setCycleCount(500);
+
+        //Setting duration of the transition
+        rotate.setDuration(Duration.millis(1000));
+
+        //the transition will be auto reversed by setting this to true
+        rotate.setAutoReverse(true);
+
+        //setting Rectangle as the node onto which the
+// transition will be applied
+        rotate.setNode(mediaView);
+
+        //playing the transition
+        rotate.play();
+
+
+        Group root = new Group();
+        root.getChildren().addAll(rectangle, mediaView, controlBox);
+
+        Scene scene = new Scene(root, 1000, 500, Color.WHITE);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("SIMATS");
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}

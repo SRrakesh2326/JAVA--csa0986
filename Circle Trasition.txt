@@ -1,0 +1,57 @@
+package application;  
+import javafx.animation.FadeTransition;  
+import javafx.application.Application;  
+
+import javafx.scene.Group;  
+import javafx.scene.Scene;  
+import javafx.scene.paint.Color;  
+import javafx.scene.shape.Circle;  
+
+import javafx.stage.Stage;  
+import javafx.util.Duration;  
+public class Ane_cirfade extends Application{  
+  
+    @Override  
+    public void start(Stage primaryStage) throws Exception {  
+        
+       Circle c = new Circle(250,150,80);  
+        c.setFill(Color.LIMEGREEN);  
+        c.setStroke(Color.HOTPINK);  
+        c.setStrokeWidth(5);  
+          
+        
+        FadeTransition ft = new FadeTransition();  
+          
+        
+       ft.setFromValue(1.0);
+       ft.setToValue(0.1);
+          
+       
+        
+        ft.setCycleCount(500);  
+          
+       
+        ft.setDuration(Duration.millis(1000));  
+          
+       
+        ft.setAutoReverse(true);  
+       
+        ft.setNode(c);  
+          
+       
+        ft.play();  
+          
+        
+        Group root = new Group();  
+        root.getChildren().add(c);  
+        Scene scene = new Scene(root,500,400,Color.BLACK);  
+        primaryStage.setScene(scene);  
+        primaryStage.setTitle("Translate Transition example");  
+        primaryStage.show();  
+          
+    }  
+    public static void main(String[] args) {  
+        launch(args);  
+    }  
+  
+}
