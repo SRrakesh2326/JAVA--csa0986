@@ -1,0 +1,25 @@
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+class JavaTree{
+    public static void main(String[] args){
+ JFrame f = new JFrame("JAVA");
+ 
+    JAVA TREE:
+
+DefaultMutableTreeNode s = new DefaultMutableTreeNode("Style");
+ DefaultMutableTreeNode c = new DefaultMutableTreeNode("Colour");
+ DefaultMutableTreeNode fo = new DefaultMutableTreeNode("Font");
+ s.add(c);
+ s.add(fo);
+ DefaultMutableTreeNode r = new DefaultMutableTreeNode("red");
+ DefaultMutableTreeNode b = new DefaultMutableTreeNode("blue");
+ DefaultMutableTreeNode g = new DefaultMutableTreeNode("green");
+ c.add(r);
+ c.add(b);
+ c.add(g);
+ JTree jt = new JTree(s);
+ f.add(jt);
+ f.setSize(600,300);
+ f.setVisible(true);
+}
+}
